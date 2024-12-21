@@ -22,8 +22,7 @@ export const login = async (email: string, password: string) => {
     if (!data) {
       throw new Error("User not found");
     }
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    const isValidPassword = await bcrypt.compare(password, hashedPassword);
+    const isValidPassword = await bcrypt.compare(password, data.password);
 
     if (!isValidPassword) {
       throw new Error("Invalid password");
@@ -70,6 +69,11 @@ export const register = async (
         email: email,
         password: hashedPassword,
         gender: Gender,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
       },
     });
     return user;
