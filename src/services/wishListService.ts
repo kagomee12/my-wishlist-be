@@ -14,7 +14,20 @@ export const addWishList = async (ownerId: string, items: string) => {
   }
 };
 
-export const getWishList = async (ownerId: string) => {
+export const getWishListbyId = async (id: string) => {
+  try {
+    const wishList = await db.wishlist.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return wishList;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getWishListbyOwnerId = async (ownerId: string) => {
   try {
     const wishList = await db.wishlist.findMany({
       where: {

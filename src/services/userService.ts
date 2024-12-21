@@ -15,7 +15,13 @@ export const getUserById = async (id: string) => {
   try {
     const data = await db.user.findUnique({
       where: { id },
-      select: { id: true, email: true, gender: true, name: true },
+      select: {
+        id: true,
+        email: true,
+        gender: true,
+        name: true,
+        wishlists: true,
+      },
     });
     return data;
   } catch (error) {
