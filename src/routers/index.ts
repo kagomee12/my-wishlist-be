@@ -5,7 +5,7 @@ import wishListRouter from "./wishListRoutes";
 
 const router = Router();
 router.use("/auth", authRouter);
-router.use("user", userRouter);
+router.use("/user", userRouter);
 router.use("/wishlist", wishListRouter);
 
 export default router;

@@ -4,9 +4,10 @@ import {
   addWishlist,
   deleteWishlist,
   getAllWishlist,
-  getWishlist,
+  getWishlistbyOwner,
   updateStatusWishlist,
   updateWishlist,
+  getWishListById,
 } from "../controller/wishListController";
 
 const wishListRouter = Router();
@@ -14,10 +15,11 @@ const wishListRouter = Router();
 wishListRouter.use(authenticate);
 
 wishListRouter.get("/", getAllWishlist);
-wishListRouter.get("/:id", getWishlist);
+wishListRouter.get("/owner/:id", getWishlistbyOwner);
 wishListRouter.post("/", addWishlist);
-wishListRouter.patch("/:id", updateWishlist);
 wishListRouter.delete("/:id", deleteWishlist);
+wishListRouter.get("/:id", getWishListById);
+wishListRouter.patch("/:id", updateWishlist);
 wishListRouter.patch("/status/:id", updateStatusWishlist);
 
 export default wishListRouter;
