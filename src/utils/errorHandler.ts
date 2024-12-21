@@ -7,5 +7,5 @@ export default function errorHandler(res: Response, err: Error) {
 
   return res
     .status(ERROR_CODE[message] || 500)
-    .json({ error: ERROR_MESSAGE[message] || message });
+    .json({ status: "error", message: ERROR_MESSAGE[message] || message });
 }
